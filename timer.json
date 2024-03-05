@@ -1,11 +1,11 @@
 {
   "format": "CHIP-0007",
-  "name": "Chia Halving Timer #1",
+  "name": "Chia Halving Timer",
   "description": "Chia Halving Timer",
   "sensitive_content": false,
   "collection": {
     "name": "Chia Halving Timer",
-    "id": "a617509e-f587-4c10-9f4b-b28242c4f234",
+    "id": "bb41de33-9d61-4c44-b254-f30e0f51191d",
     "attributes": [
       {
         "type": "description",
@@ -17,7 +17,7 @@
       },
       {
         "type": "icon",
-        "value": "https://bafybeicxk4mcmhqkz2qbijk2vqph22b4wuejyivc53mbuuqha6oo6vlcde.ipfs.nftstorage.link/cropped.gif"
+        "value": "https://bafybeibclqy4g2cvsu3uziifyqjp34mevjwvvtd5ctfdbgej77rdpcxhsq.ipfs.nftstorage.link/gif.gif"
       },
       {
         "type": "banner",
