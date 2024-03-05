@@ -67,7 +67,7 @@
       var sec = seconds;      
       var indice = 1;
       console.log(seconds)
-
+      var reste = 1;
       var x = setInterval(function() {
 
       var days = Math.floor(sec / (3600*24));
@@ -85,8 +85,8 @@
       $(".mypanel").html(text2);
       indice++;
       sec = seconds - indice;
-      if (indice == 19) {
-        indice = 0;
+      reste = indice % 19;
+      if (reste == 0) {
         blocksleft--;
       }
        // console.log(seconds);
