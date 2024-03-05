@@ -11,22 +11,36 @@
 <body style="font-family: 'Public Pixel', sans-serif;">
 <div class="mypanel" style="font-size:20px"></div>
   <script>
-
-    $.getJSON('https://kraken.fireacademy.io/a16e7e79-d1f8-43a6-b79f-89846ffbbfa3/leaflet/get_blockchain_state', function(data) {
       const halving1 = 5045760;
       const halving2 = 10091520;
       const halving3 = 15137280;
       const halving4 = 20183040;
-      let block = data.blockchain_state.peak.height;
-      //const block = 5045760;
       document.body.style.backgroundColor = "black";
       document.body.style.backgroundImage = "url('https://bafybeiba6keoz3ondbqw73e6ujbyrryke3omkdj6ujtdlidtqprxxmglpu.ipfs.nftstorage.link/steel.png')";
       document.body.style.backgroundRepeat = "no-repeat";
       document.body.style.backgroundSize = "contain";
       document.body.style.backgroundPosition = "center center";
       document.body.style.color = "silver";
+
+      var block = 0;
+      var blocksleft = 0;
+
+      function getValue(){
+         var value= $.ajax({ 
+            url: 'https://kraken.fireacademy.io/a16e7e79-d1f8-43a6-b79f-89846ffbbfa3/leaflet/get_blockchain_state', 
+            async: false
+         }).responseText;
+         return value;
+      }
+      const json = getValue();
+      const obj = JSON.parse(json);
+      block = obj.blockchain_state.peak.height;
+      console.log(block)
+      
+      //const block = 5045760;
       if (block < halving1) {
         blocksleft = halving1 - block;
+       
       }
       if (block < halving2 && block >= halving1) {
         blocksleft = halving2 - block;
@@ -47,29 +61,37 @@
         blocksleft = 0;
         document.body.style.backgroundImage = "url('https://bafybeiba6keoz3ondbqw73e6ujbyrryke3omkdj6ujtdlidtqprxxmglpu.ipfs.nftstorage.link/timelord.png')";
       }
-      var perc = 0;
-      perc = 100 - blocksleft * 100 / halving1
-      var time = 0;
-      time = blocksleft * 18.75 
+      var perc = 100 - blocksleft * 100 / halving1
+      var time = blocksleft * 18.75 
       var seconds = parseInt(time, 10);
+      var sec = seconds;      
+      var indice = 1;
+      console.log(seconds)
 
       var x = setInterval(function() {
 
-var days = Math.floor(seconds / (3600*24));
-seconds  -= days*3600*24;
-var hrs   = Math.floor(seconds / 3600);
-seconds  -= hrs*3600;
-var mnts = Math.floor(seconds / 60);
-seconds  -= mnts*60;
-timetring = `${days}d${hrs}h${mnts}m${seconds}s`
+      var days = Math.floor(sec / (3600*24));
+      sec  -= days*3600*24;
+      var hrs   = Math.floor(sec / 3600);
+      sec  -= hrs*3600;
+      var mnts = Math.floor(sec / 60);
+      sec  -= mnts*60;
+      timetring = `${days}d${hrs}h${mnts}m${sec}s`
       var text2 = `${new Intl.NumberFormat().format(blocksleft)} ${perc.toString().substring(0,5)}% ${timetring}`
       
       if (block >= halving4) {
         var text2 = ``
       }
       $(".mypanel").html(text2);
-        }, 1000);
-    });
+      indice++;
+      sec = seconds - indice;
+      if (indice == 19) {
+        indice = 0;
+        blocksleft--;
+      }
+       // console.log(seconds);
+      }, 1000);
+    // });
   </script>
 </body>
 </html>
