@@ -1,0 +1,72 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="stylesheet" href="style.css"> 
+  <title>Chia Halving Schedule</title>
+  <link href="https://fonts.cdnfonts.com/css/public-pixel" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+
+<body style="font-family: 'Public Pixel', sans-serif;">
+<div class="mypanel" style="font-size:20px"></div>
+  <script>
+
+    $.getJSON('https://kraken.fireacademy.io/a16e7e79-d1f8-43a6-b79f-89846ffbbfa3/leaflet/get_blockchain_state', function(data) {
+      const halving1 = 5045760;
+      const halving2 = 10091520;
+      const halving3 = 15137280;
+      const halving4 = 20183040;
+      let block = data.blockchain_state.peak.height;
+      //const block = 5045760;
+      document.body.style.backgroundColor = "black";
+      document.body.style.backgroundImage = "url('https://bafybeiba6keoz3ondbqw73e6ujbyrryke3omkdj6ujtdlidtqprxxmglpu.ipfs.nftstorage.link/steel.png')";
+      document.body.style.backgroundRepeat = "no-repeat";
+      document.body.style.backgroundSize = "contain";
+      document.body.style.backgroundPosition = "center center";
+      document.body.style.color = "silver";
+      if (block < halving1) {
+        blocksleft = halving1 - block;
+      }
+      if (block < halving2 && block >= halving1) {
+        blocksleft = halving2 - block;
+        document.body.style.backgroundImage = "url('https://bafybeiba6keoz3ondbqw73e6ujbyrryke3omkdj6ujtdlidtqprxxmglpu.ipfs.nftstorage.link/jade.png')";
+        document.body.style.color = "mediumspringgreen";
+      }
+      if (block < halving3 && block >= halving2) {
+        blocksleft = halving3 - block;
+        document.body.style.backgroundImage = "url('https://bafybeiba6keoz3ondbqw73e6ujbyrryke3omkdj6ujtdlidtqprxxmglpu.ipfs.nftstorage.link/amethyst.png')";
+        document.body.style.color = "mediumpurple";
+      }
+      if (block < halving4 && block >= halving3) {
+        blocksleft = halving4 - block;
+        document.body.style.backgroundImage = "url('https://bafybeiba6keoz3ondbqw73e6ujbyrryke3omkdj6ujtdlidtqprxxmglpu.ipfs.nftstorage.link/gold.png')";
+        document.body.style.color = "gold";
+      }
+      if (block >= halving4) {
+        blocksleft = 0;
+        document.body.style.backgroundImage = "url('https://bafybeiba6keoz3ondbqw73e6ujbyrryke3omkdj6ujtdlidtqprxxmglpu.ipfs.nftstorage.link/timelord.png')";
+      }
+      var perc = 0;
+      perc = 100 - blocksleft * 100 / halving1
+      var time = 0;
+      time = blocksleft * 18.75 
+      var seconds = parseInt(time, 10);
+
+var days = Math.floor(seconds / (3600*24));
+seconds  -= days*3600*24;
+var hrs   = Math.floor(seconds / 3600);
+seconds  -= hrs*3600;
+var mnts = Math.floor(seconds / 60);
+seconds  -= mnts*60;
+timetring = `${days}d${hrs}h${mnts}m`
+      var text2 = `${new Intl.NumberFormat().format(blocksleft)} ${perc.toString().substring(0,5)}% ${timetring}`
+      
+      if (block >= halving4) {
+        var text2 = ``
+      }
+      $(".mypanel").html(text2);
+    });
+  </script>
+</body>
+</html>

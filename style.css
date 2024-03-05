@@ -1,0 +1,14 @@
+.mypanel {
+  height : 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (max-width: 767px) { 
+.mypanel {
+  width : 100%;
+  display: flex;
+  justify-content: center;
+
+  }
+}
