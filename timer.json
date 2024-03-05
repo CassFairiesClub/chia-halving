@@ -1,0 +1,40 @@
+{
+  "format": "CHIP-0007",
+  "name": "Chia Halving Timer #1",
+  "description": "Chia Halving Timer",
+  "sensitive_content": false,
+  "collection": {
+    "name": "Chia Halving Timer",
+    "id": "a617509e-f587-4c10-9f4b-b28242c4f234",
+    "attributes": [
+      {
+        "type": "description",
+        "value": "Dynamic NFT. Each NFT points to an html page keeping track of the current halving schedule. Open Edition collection minted by batches of 100."
+      },
+      {
+        "type": "twitter",
+        "value": "@CF_Lost_Gifs"
+      },
+      {
+        "type": "icon",
+        "value": "https://bafybeicxk4mcmhqkz2qbijk2vqph22b4wuejyivc53mbuuqha6oo6vlcde.ipfs.nftstorage.link/cropped.gif"
+      },
+      {
+        "type": "banner",
+        "value": "https://bafybeignwvynap5ckf6tvwckag7lzydk4abhhzpqta6cu6zwwqusolplwa.ipfs.nftstorage.link/banner.png"
+      }
+    ]
+  },
+  "attributes": [
+  {
+    "trait_type": "HTML",
+    "value": "https://cassfairiesclub.github.io/chia-halving/"
+  }
+],
+  "data": {
+    "@context": "https://schema.org",
+    "@type": "WebContent",
+    "url": "https://cassfairiesclub.github.io/chia-halving/"
+  }
+}
+    
