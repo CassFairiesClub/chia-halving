@@ -59,7 +59,7 @@ var hrs   = Math.floor(seconds / 3600);
 seconds  -= hrs*3600;
 var mnts = Math.floor(seconds / 60);
 seconds  -= mnts*60;
-timetring = `${days}d${hrs}h${mnts}m`
+timetring = `${days}d${hrs}h${mnts}m${seconds}s`
       var text2 = `${new Intl.NumberFormat().format(blocksleft)} ${perc.toString().substring(0,5)}% ${timetring}`
       
       if (block >= halving4) {
