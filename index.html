@@ -53,6 +53,8 @@
       time = blocksleft * 18.75 
       var seconds = parseInt(time, 10);
 
+      var x = setInterval(function() {
+
 var days = Math.floor(seconds / (3600*24));
 seconds  -= days*3600*24;
 var hrs   = Math.floor(seconds / 3600);
@@ -66,6 +68,7 @@ timetring = `${days}d${hrs}h${mnts}m${seconds}s`
         var text2 = ``
       }
       $(".mypanel").html(text2);
+        }, 1000);
     });
   </script>
 </body>
