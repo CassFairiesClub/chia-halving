@@ -16,6 +16,7 @@
     var sec;
     var indice;
     var reste;
+    var text2;
     const delay = ms => new Promise(res => setTimeout(res, ms));
 
     function getValue() {
@@ -82,9 +83,9 @@
       var mnts = Math.floor(sec / 60);
       sec -= mnts * 60;
       timetring = `${days}d${hrs}h${mnts}m${sec}s`
-      var text2 = `${new Intl.NumberFormat().format(blocksleft)} ${perc.toString().substring(0,5)}% ${timetring}`
+      text2 = `${new Intl.NumberFormat().format(blocksleft)} ${perc.toString().substring(0,5)}% ${timetring}`
       if (block >= halving4) {
-        var text2 = ``
+        text2 = ``
       }
       $(".mypanel").html(text2);
       indice++;
