@@ -92,8 +92,8 @@
       sec = seconds - indice;
       reste = indice % 19;
       if (reste == 0) {
-        blocksleft--;
-        // block++;
+        //blocksleft--;
+        block++;
       }
       // console.log(seconds);
     }, 1000);
