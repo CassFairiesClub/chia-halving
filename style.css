@@ -1,14 +1,20 @@
-.mypanel {
-  height : 100vh;
-  display: flex;
-  justify-content: center;
+html, body, .mypanel {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
-
-@media screen and (max-width: 767px) { 
 .mypanel {
-  width : 100%;
-  display: flex;
-  justify-content: center;
-
+    height : 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 20;
   }
-}
+  
+  @media screen and (max-width: 767px) { 
+  .mypanel {
+    width : 100%;
+    display: flex;
+    justify-content: center;
+  
+    }
+  }
