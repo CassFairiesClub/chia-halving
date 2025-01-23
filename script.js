@@ -18,6 +18,7 @@ var indice;
 var reste;
 var text2;
 var x;
+var future;
 const delay = ms => new Promise(res => setTimeout(res, ms));
 
 function getValue() {
@@ -74,6 +75,8 @@ function checkBlock() {
     perc = 100 - (blocksleft % halving1) * 100 / halving1;
     indice = 1;
     reste = 1;
+    future = new Date((Math.floor(Date.now() / 1000) + seconds) * 1000);
+
     x = setInterval(function () {
         var days = Math.floor(sec / (3600 * 24));
         sec -= days * 3600 * 24;
@@ -82,7 +85,7 @@ function checkBlock() {
         var mnts = Math.floor(sec / 60);
         sec -= mnts * 60;
         timetring = `${days}d${hrs}h${mnts}m${sec}s`
-        text2 = `${new Intl.NumberFormat().format(blocksleft)} ${perc.toString().substring(0, 5)}% ${timetring}`
+        text2 = `${future.toUTCString()} ${new Intl.NumberFormat().format(blocksleft)} ${perc.toString().substring(0, 5)}% ${timetring}`
         if (block >= halving4) {
             text2 = ``
         }
@@ -104,6 +107,11 @@ ws.onmessage = (event) => {
             console.log('New block height:', message.data.height);
             block = message.data.height;
             checkBlock();
+            document.getElementById("sig").style.textShadow = "0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #b6ff00, 0 0 70px #b6ff00, 0 0 80px #b6ff00, 0 0 100px #b6ff00, 0 0 150px #b6ff00";
+            setTimeout(() => {
+                document.getElementById("sig").style.textShadow = "none";
+              }, 100);
+              
             break;
     }
 };
@@ -111,7 +119,8 @@ ws.onmessage = (event) => {
 const json = getValue();
 const obj = JSON.parse(json);
 block = obj.blockchain_state.peak.height;
-console.log(block)
 
 checkBlock();
-
+if(document.body.clientHeight < document.body.clientWidth){
+    document.getElementById("mypanel").style.width = document.body.clientHeight
+}
